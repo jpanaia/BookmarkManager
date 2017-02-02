@@ -5,3 +5,4 @@
 * Store multiple resources in state
 * Break state object resources into subjects
 * Create subject component
+* Render subject title per component
