@@ -9,16 +9,22 @@ class App extends Component {
     super();
 
     this.state = { 
-        url: "https://facebook.github.io/react/docs/thinking-in-react.html", 
-        name: "Thinking in React"
+        resources:  [
+                        {title: "Thinking in React", url: "https://facebook.github.io/react/docs/thinking-in-react.html"},
+                        {title: "Higher Order Functions", url: "https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84"},
+                        {title: "ES 6 - part 1", url: "https://www.youtube.com/watch?v=sjyJBL5fkp8"}
+                    ]
     };
+
   }
   //event handlers here
 
   render() {
     return (
         <ul>
-            <li><a href={this.state.url} target="_blank">{this.state.name}</a></li>
+            {this.state.resources.map((resource) => {
+                return <li><a href={resource.url} target="_blank">{resource.title}</a></li>
+            })}
         </ul>
     );
   }
