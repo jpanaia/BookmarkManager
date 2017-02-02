@@ -8,15 +8,17 @@ class App extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = { 
+        url: "https://facebook.github.io/react/docs/thinking-in-react.html", 
+        name: "Thinking in React"
+    };
   }
-
   //event handlers here
 
   render() {
     return (
         <ul>
-            <li><a href="https://facebook.github.io/react/docs/thinking-in-react.html" target="_blank">Thinking in React</a></li>
+            <li><a href={this.state.url} target="_blank">{this.state.name}</a></li>
         </ul>
     );
   }
