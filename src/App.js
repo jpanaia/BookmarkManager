@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Subject from './Subject';
+import Button from './Button';
 
 class App extends Component {
 
@@ -32,17 +33,33 @@ class App extends Component {
                 {   subject: "Intro to React",
                     resources: [
                                     {title: "ReactJS Basics Playlist - Mindspace", url: "https://www.youtube.com/watch?v=JPT3bFIwJYA&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skSt"},
-                                    {title: "REACT JS TUTORIAL - LearnCode.academy", url: "https://www.youtube.com/watch?v=fd2Cayhez58&feature=youtu.be"}
+                                    {title: "REACT JS TUTORIAL - LearnCode.academy", url: "https://www.youtube.com/watch?v=fd2Cayhez58&feature=youtu.be"},
+                                    {title: "Handling Events", url: "https://facebook.github.io/react/docs/handling-events.html"},
+                                    {title: "Stateless Functional Components", url: "https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.7vqh2zp8m"}
                                 ]
+                },
+                {   subject: "Stylin in React",
+                    resources: [
+
+                                {title: "A toolchain for React component styling", url: "https://github.com/FormidableLabs/radium"}
+                            ]
                 }
             ]
         }
     }
   //event handlers here
+    handleClick() {
+         // this.setState({
+         //      test: 'yo'
+         //  });
+        console.log(this);
+    }
 
     render() {
         return (
             <div>
+               <Button name = {"Click Me"}/>
+
                 {this.state.resources.map((resource, i) => {
                     return (
                         <Subject key={i} items={resource}/>
