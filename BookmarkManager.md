@@ -6,3 +6,5 @@
 * Break state object resources into subjects
 * Create subject component
 * Render subject title per component
+* Modify App.js propsto accomodate new state structure
+* Display list of resource titles and links per component

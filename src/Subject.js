@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 export default class Subject extends Component {
 	constructor(props) {
 		super(props);
-
 	}
 	// event handlers
 
 	render() {
 		return (
-			<h1>{this.props.subject}</h1>
+			<div>
+				<h2>{this.props.items.subject}</h2>
+				<ul>
+					<li><a href="#">{this.props.items.resources[0].title}</a></li>
+				</ul>
+			</div>
 		)
 	}
 

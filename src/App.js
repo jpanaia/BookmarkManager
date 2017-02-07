@@ -27,7 +27,7 @@ class App extends Component {
                                     {title: "ECMAScript 6 / ES6 New Features - Tutorial 1 - Let", url: "https://www.youtube.com/watch?v=ZJZfIw3P8No&list=PL6gx4Cwl9DGBhgcpA8eTYYWg7im72LgLt"}
                                 ]
                 },
-                {   subject: "Beginning React",
+                {   subject: "Intro to React",
                     resources: [
                                     {title: "ReactJS Basics Playlist - Mindspace", url: "https://www.youtube.com/watch?v=JPT3bFIwJYA&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skSt"},
                                     {title: "REACT JS TUTORIAL - LearnCode.academy", url: "https://www.youtube.com/watch?v=fd2Cayhez58&feature=youtu.be"}
@@ -42,9 +42,10 @@ class App extends Component {
         return (
             <div>
                 Parent component
-                <Subject subject={this.state.resources[0].subject}/>
-                <Subject subject={this.state.resources[1].subject}/>
-                <Subject subject={this.state.resources[2].subject}/>
+               {/*} {this.state.resources.map((s) => s.subject)} */}
+                <Subject items={this.state.resources[0]}/>
+                <Subject items={this.state.resources[1]}/>
+                <Subject items={this.state.resources[2]}/> 
             </div>
         );
     }
