@@ -13,7 +13,8 @@ class App extends Component {
                     resources: [
                                     {title: "Thinking in React", url: "https://facebook.github.io/react/docs/thinking-in-react.html"},
                                     {title: "Higher Order Functions", url: "https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84"},
-                                    {title: "var, let and const - What, why and how", url: "https://www.youtube.com/watch?v=sjyJBL5fkp8"}
+                                    {title: "var, let and const - What, why and how", url: "https://www.youtube.com/watch?v=sjyJBL5fkp8"},
+                                    {title: "Hexlet's Intro To JavaScript Programming course", url: "https://www.youtube.com/playlist?list=PL-xu4i_QDSxcoDNeh8rx5-pHCCTOg0XsI"}
                                 ]
                 },
                 {   subject:  "ES6",
@@ -24,7 +25,8 @@ class App extends Component {
                                     {title: "ES6 Interactive Guide", url: "http://stack.formidable.com/es6-interactive-guide/#/"},
                                     {title: "Javascript ES6 Cheatsheet - the best of JS ES6", url: "https://www.youtube.com/watch?v=AfWYO8t7ed4"},
                                     {title: "Javascript ES6 Cheatsheet #2 - the best of JS ES6", url: "https://www.youtube.com/watch?v=LmL0Gh193M0"},
-                                    {title: "ECMAScript 6 / ES6 New Features - Tutorial 1 - Let", url: "https://www.youtube.com/watch?v=ZJZfIw3P8No&list=PL6gx4Cwl9DGBhgcpA8eTYYWg7im72LgLt"}
+                                    {title: "ECMAScript 6 / ES6 New Features - Tutorial 1 - Let", url: "https://www.youtube.com/watch?v=ZJZfIw3P8No&list=PL6gx4Cwl9DGBhgcpA8eTYYWg7im72LgLt"},
+                                    {title: "6 Great Uses of the Spread Operator", url: "https://davidwalsh.name/spread-operator"}
                                 ]
                 },
                 {   subject: "Intro to React",
@@ -41,11 +43,11 @@ class App extends Component {
     render() {
         return (
             <div>
-                Parent component
-               {/*} {this.state.resources.map((s) => s.subject)} */}
-                <Subject items={this.state.resources[0]}/>
-                <Subject items={this.state.resources[1]}/>
-                <Subject items={this.state.resources[2]}/> 
+                {this.state.resources.map((resource, i) => {
+                    return (
+                        <Subject key={i} items={resource}/>
+                    )}
+                )}  
             </div>
         );
     }
