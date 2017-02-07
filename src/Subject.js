@@ -11,7 +11,11 @@ export default class Subject extends Component {
 			<div>
 				<h2>{this.props.items.subject}</h2>
 				<ul>
-					<li><a href="#">{this.props.items.resources[0].title}</a></li>
+					{this.props.items.resources.map((resource, i) => {
+						return (
+							<li key={i}><a href={resource.url}>{resource.title}</a></li>
+						)}
+					)}
 				</ul>
 			</div>
 		)
