@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Subject from './Subject';
 import Button from './Button';
+import Jaime from './Jaime';
 
 class App extends Component {
 
   // stuff applied to everything in constructor
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = { 
             resources: [
@@ -15,7 +16,9 @@ class App extends Component {
                                     {title: "Thinking in React", url: "https://facebook.github.io/react/docs/thinking-in-react.html"},
                                     {title: "Higher Order Functions", url: "https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84"},
                                     {title: "var, let and const - What, why and how", url: "https://www.youtube.com/watch?v=sjyJBL5fkp8"},
-                                    {title: "Hexlet's Intro To JavaScript Programming course", url: "https://www.youtube.com/playlist?list=PL-xu4i_QDSxcoDNeh8rx5-pHCCTOg0XsI"}
+                                    {title: "Hexlet's Intro To JavaScript Programming course", url: "https://www.youtube.com/playlist?list=PL-xu4i_QDSxcoDNeh8rx5-pHCCTOg0XsI"},
+                                    {title: "Understanding Javascript function-prototype bind", url: "https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/"},
+                                    {title: "Event Handlers", url: "https://www.youtube.com/watch?v=_D1JGNidMr4&feature=youtu.be"}
                                 ]
                 },
                 {   subject:  "ES6",
@@ -35,7 +38,7 @@ class App extends Component {
                                     {title: "ReactJS Basics Playlist - Mindspace", url: "https://www.youtube.com/watch?v=JPT3bFIwJYA&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skSt"},
                                     {title: "REACT JS TUTORIAL - LearnCode.academy", url: "https://www.youtube.com/watch?v=fd2Cayhez58&feature=youtu.be"},
                                     {title: "Handling Events", url: "https://facebook.github.io/react/docs/handling-events.html"},
-                                    {title: "Stateless Functional Components", url: "https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.7vqh2zp8m"}
+                                    {title: "Stateless Functional Components", url: "https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.7vqh2zp8m"},
                                 ]
                 },
                 {   subject: "Stylin in React",
@@ -47,19 +50,13 @@ class App extends Component {
             ]
         }
     }
-  //event handlers here
-    handleClick() {
-         // this.setState({
-         //      test: 'yo'
-         //  });
-        console.log(this);
-    }
+    //event handlers here
+
 
     render() {
         return (
-            <div>
-               <Button name = {"Click Me"}/>
-
+            <div className = "container">
+                <Jaime initialAge={37}/>
                 {this.state.resources.map((resource, i) => {
                     return (
                         <Subject key={i} items={resource}/>
