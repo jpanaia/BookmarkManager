@@ -10,7 +10,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.handleNewResource = this.handleNewResource.bind(this);
+        this.addNewResource = this.addNewResource.bind(this);
 
         this.state = { 
             resources: [
@@ -54,30 +54,14 @@ class App extends Component {
         }
     }
     //event handlers here
-    handleNewResource(url, title) {
-        //e.preventDefault();
-        //console.log(this.state.resources[0].resources[5].title);
-        const resourceLength = this.state.resources.length + 1;
-        console.log(resourceLength);
-        //console.log(this.state.resources[0].resources[resourceLength].title);
-        // console.log(this.state.resources[0].resources[resourceLength + 1].title);
-        
-        //this.state.resources[0].resources[resourceLength+1].title = title;
-        //const item = this.state.resources[0].resources[6];
-        //console.log(item);
+    addNewResource(subject, resource) {
+        console.log(subject, resource)
 
-        // let objForUpdate = { resources: { resources: { title : {}, url: {} } } };
-        // objForUpdate.resources.resources.title = title;
-        // objForUpdate.resources.resources.url = url;
-        // console.log(objForUpdate);
-        // var newData = React.addons.update( this.state, objForUpdate );
+        const tempState = this.state;
+        console.log(tempState.resources);
+        tempState.resources[subject].resources.push(resource);
 
-        // var updatedTicket = Object.assign({}, this.state.ticket, {flightNo:'1010'});
-        // this.setState({ticket:updatedTicket});
-
-        // this.setState({
-        //     title: title
-        // });
+        this.setState(tempState)
     }
 
     render() {
@@ -86,7 +70,7 @@ class App extends Component {
                 <Jaime initialAge={37}/>
                 {this.state.resources.map((resource, i) => {
                     return (
-                        <Subject key={i} items={resource} callback={this.handleNewResource}/>
+                        <Subject key={i} items={resource} addResource={this.addNewResource} index={i}/>
                     )}
                 )}  
             </div>

@@ -4,9 +4,9 @@ export default class Subject extends Component {
 	constructor(props) {
 		super(props);
 
+		this.handleChange = this.handleChange.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
 
 		this.state = {
 			isClicked: false,
@@ -42,11 +42,20 @@ export default class Subject extends Component {
     }
 
     handleSubmit(e){	
-    	console.log(this.state);
+    	//console.log(this.state);
     	e.preventDefault();
 
+    	const newResource = {
+    		title: this.state.title,
+    		url: this.state.url
+    	}
     	//Callback to Parent
-        this.props.callback(this.state.url, this.state.title);
+        this.props.addResource(this.props.index, newResource);
+
+        this.setState({
+        	title: '',
+        	url: ''
+        })
     }
 
 	render() {
@@ -58,16 +67,19 @@ export default class Subject extends Component {
 				</h2>
 
 				<form onSubmit={this.handleSubmit}>
+
 					<input type="text" 
-						   name="url" 
-						   placeholder="url" 
-						   value={this.state.url} 
+						   name="title"
+						   id="title" 
+						   placeholder="title" 
+						   value={this.state.title} 
 						   onChange={this.handleChange}/>
 
 					<input type="text" 
-						   name="title" 
-						   placeholder="title" 
-						   value={this.state.title} 
+						   name="url" 
+						   id="title"
+						   placeholder="url" 
+						   value={this.state.url} 
 						   onChange={this.handleChange}/>
 
 					<button type="submit">Submit</button>
