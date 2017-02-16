@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Subject from './Subject';
-import Button from './Button';
+//import Button from './Button';
 import Jaime from './Jaime';
+
 
 class App extends Component {
 
   // stuff applied to everything in constructor
     constructor(props) {
         super(props);
+
+        this.handleNewResource = this.handleNewResource.bind(this);
 
         this.state = { 
             resources: [
@@ -51,15 +54,39 @@ class App extends Component {
         }
     }
     //event handlers here
+    handleNewResource(url, title) {
+        //e.preventDefault();
+        //console.log(this.state.resources[0].resources[5].title);
+        const resourceLength = this.state.resources.length + 1;
+        console.log(resourceLength);
+        //console.log(this.state.resources[0].resources[resourceLength].title);
+        // console.log(this.state.resources[0].resources[resourceLength + 1].title);
+        
+        //this.state.resources[0].resources[resourceLength+1].title = title;
+        //const item = this.state.resources[0].resources[6];
+        //console.log(item);
 
+        // let objForUpdate = { resources: { resources: { title : {}, url: {} } } };
+        // objForUpdate.resources.resources.title = title;
+        // objForUpdate.resources.resources.url = url;
+        // console.log(objForUpdate);
+        // var newData = React.addons.update( this.state, objForUpdate );
+
+        // var updatedTicket = Object.assign({}, this.state.ticket, {flightNo:'1010'});
+        // this.setState({ticket:updatedTicket});
+
+        // this.setState({
+        //     title: title
+        // });
+    }
 
     render() {
         return (
-            <div className = "container">
+            <div className="container">
                 <Jaime initialAge={37}/>
                 {this.state.resources.map((resource, i) => {
                     return (
-                        <Subject key={i} items={resource}/>
+                        <Subject key={i} items={resource} callback={this.handleNewResource}/>
                     )}
                 )}  
             </div>

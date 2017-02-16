@@ -10,3 +10,16 @@ body {
 /*	font-size: 100px;
 */	transform: rotateX(180deg);
 }
+
+
+.container {
+	padding: 0 20px;
+}
+
+label {
+	font-weight: bold;
+}
+
+input[type=text], button {
+	padding: 10px;
+}

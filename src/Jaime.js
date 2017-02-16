@@ -25,12 +25,12 @@ export default class Jaime extends Component {
 	}
 
 	handleHide(e){
-        console.log(e);
+        //console.log(e);
         e.currentTarget.style.visibility = "hidden";
     }
 
     handleShow(e){
-        console.log(e);
+        //console.log(e);
         e.currentTarget.style.visibility = "visible";
     }
 	render() {
