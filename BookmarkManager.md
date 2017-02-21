@@ -11,7 +11,8 @@
 
 * Clicking on header of component changes text appearance (color, font, etc)
 * Render a controlled input field that can be typed into
-
+* Render a button in App that returns something via event handler
+* Add a new subject with title and empty array of resources
 
 
 - challenge: show/hide when clicking header/subject
