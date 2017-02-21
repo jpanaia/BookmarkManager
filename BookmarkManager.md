@@ -13,6 +13,7 @@
 * Render a controlled input field that can be typed into
 * Render a button in App that returns something via event handler
 * Add a new subject with title and empty array of resources
+* Refactor "add new subject" functionality into separate component (GO ROMAN!!!)
 
 
 - challenge: show/hide when clicking header/subject

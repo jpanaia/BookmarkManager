@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Subject from './Subject';
+import AddNewResource from './AddNewResource';
 //import Button from './Button';
 //import Jaime from './Jaime';
 
@@ -11,8 +12,8 @@ class App extends Component {
         super(props);
 
         this.addNewResource = this.addNewResource.bind(this);
-        this.addSubject = this.addSubject.bind(this);
-        this.handleSubjectChange = this.handleSubjectChange.bind(this);
+        // this.addSubject = this.addSubject.bind(this);
+        // this.handleSubjectChange = this.handleSubjectChange.bind(this);
 
         this.state = { 
             subject: '',
@@ -56,54 +57,46 @@ class App extends Component {
             ]
         }
     }
-    //event handlers here
+    // //event handlers here
     addNewResource(subject, resource) {
         const tempState = this.state;
         tempState.resources[subject].resources.push(resource);
         this.setState(tempState)
     }
 
-    addSubject(e) {
-        e.preventDefault();
-        const tempState = this.state;
-        const resource = { subject: this.state.subject, resources: [] };
-        tempState.resources.push(resource);
-        this.setState(tempState); 
-    }
+    // addSubject(e) {
+    //     e.preventDefault();
+    //     const tempState = this.state;
+    //     const resource = { subject: this.state.subject, resources: [] };
+    //     tempState.resources.push(resource);
+    //     this.setState(tempState); 
+    // }
 
-    handleSubjectChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
+    // handleSubjectChange(e) {
+    //     this.setState({
+    //         [e.target.name]: e.target.value
+    //     });
+    // }
 
     render() {
         return (
             <div className="container">
                 <h1>Bookmark Manager</h1>
                 {/*<Jaime initialAge={37}/>*/}
-                <form>
-                    <label htmlFor="subject">Subject: </label>
-                    <input type="text" 
-                           placeholder="Subject" 
-                           name="subject"
-                           id="subject" 
-                           value={this.state.subject}
-                           onChange={this.handleSubjectChange}
-                    />
 
-                    <button onClick={this.addSubject}>Add New Subject</button>
-                </form>
+                <AddNewResource resources={this.state} />
 
                 {this.state.resources.map((resource, i) => {
                     return (
                         <Subject key={i} 
                                  items={resource} 
-                                 addResource={this.addNewResource} 
+                                 addResource={this.addNewResource}
                                  index={i}
                         />
                     )}
-                )}  
+                )} 
+
+                 
             </div>
         );
     }

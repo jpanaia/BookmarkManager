@@ -14,34 +14,27 @@ export default class Subject extends Component {
 			title: ''
 		}
 	}
+
 	// event handlers
 	handleClick() {
     	this.setState(prevState => ({
     		isClicked: !prevState.isClicked
     	}));
-    	//console.log(this.state.isClicked);      
-    }
-
-    swapStyle() {
-    	// console.log('hi');
-    	// this.setState({
-    	// 	newStyle: 'blue'
-    	// })
+    	console.log(this.state.isClicked);      
     }
 
     handleChange(e) {
-    	//console.log(e);
+    	console.log(e);
     	e.preventDefault();
     	const name = e.target.name;
     	const value = e.target.value;
-        
-        this.setState({
+                this.setState({
         	[name]: value
         });
     }
 
     handleSubmit(e){	
-    	//console.log(this.state);
+    	console.log(this.state);
     	e.preventDefault();
 
     	const newResource = {
@@ -58,43 +51,24 @@ export default class Subject extends Component {
     }
 
 	render() {
-		//console.log(this.props.items);
+        return (
+            <div className="container">
+                <h1>Bookmark Manager</h1>
+                {/*<Jaime initialAge={37}/>*/}
+                <form>
+                    <label htmlFor="subject">Subject: </label>
+                    <input type="text" 
+                           placeholder="Subject" 
+                           name="subject"
+                           id="subject" 
+                           value={this.state.subject}
+                           onChange={this.handleSubjectChange}
+                    />
 
-		return (
-			<div>
-			<h1>{this.age}</h1>
-				<h2 onClick={this.handleClick}>
-					{!this.state.isClicked ? this.props.items.subject : "Jaime Rocks"}	
-				</h2>
-
-				<form onSubmit={this.handleSubmit}>
-
-					<input type="text" 
-						   name="title"
-						   id="title" 
-						   placeholder="title" 
-						   value={this.state.title} 
-						   onChange={this.handleChange}/>
-
-					<input type="text" 
-						   name="url" 
-						   id="title"
-						   placeholder="url" 
-						   value={this.state.url} 
-						   onChange={this.handleChange}/>
-
-					<button type="submit">Submit</button>
-				</form>
-
-				<ul id="resource-list" className={this.state.newStyle}>
-					{this.props.items.resources.map((resource, i) => {
-						return (
-							<li key={i}><a onMouseOver={this.swapStyle.bind(this)} href={resource.url}>{resource.title}</a></li>
-						)}
-					)}
-				</ul>
-			</div>
-		)
-	}
+                    <button onClick={this.addSubject}>Add New Subject</button>
+                </form>
+            </div>
+        );
+    }
 
 }
