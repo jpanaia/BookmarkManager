@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Delete from './Delete';
 
 export default class Subject extends Component {
 	constructor(props) {
@@ -7,6 +8,7 @@ export default class Subject extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.deleteResource = this.deleteResource.bind(this);
 
 		this.state = {
 			isClicked: false,
@@ -57,6 +59,11 @@ export default class Subject extends Component {
         })
     }
 
+    deleteResource(title){
+        console.log('sibling', title);
+        this.props.deleteResource(title);
+    }
+
 	render() {
 		return (
 			<div>
@@ -87,7 +94,7 @@ export default class Subject extends Component {
 				<ul id="resource-list" className={this.state.newStyle}>
 					{this.props.items.resources.map((resource, i) => {
 						return (
-							<li key={i}><a onMouseOver={this.swapStyle.bind(this)} href={resource.url}>{resource.title}</a></li>
+							<li key={i}><a onMouseOver={this.swapStyle.bind(this)} href={resource.url}>{resource.title}</a> <Delete delete={this.deleteResource} title={resource.title}/> </li>
 						)}
 					)}
 				</ul>

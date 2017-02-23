@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Subject from './Subject';
 import AddNewSubject from './AddNewSubject';
+//import Delete from './Delete';
+
 //import Button from './Button';
 //import Jaime from './Jaime';
 
@@ -13,6 +15,7 @@ class App extends Component {
 
         this.addNewResource = this.addNewResource.bind(this);
         this.addSubject = this.addSubject.bind(this);
+        this.deleteOneResource = this.deleteOneResource.bind(this);
 
         this.state = { 
             subject: '',
@@ -60,7 +63,7 @@ class App extends Component {
     addNewResource(subject, resource) {
         const tempState = this.state;
         tempState.resources[subject].resources.push(resource);
-        this.setState(tempState)
+        this.setState(tempState);
     }
 
     addSubject(subject) {
@@ -72,6 +75,14 @@ class App extends Component {
 
         tempState.resources.push(newSubject);
         this.setState(tempState);
+    }
+
+    deleteOneResource(title){
+        console.log('parent', title);
+        const tempState = this.state;
+        console.log(tempState.resources[title]);
+        //this.setState(tempState);
+        //console.log(tempState);
     }
 
     render() {
@@ -87,6 +98,7 @@ class App extends Component {
                                  items={resource} 
                                  addResource={this.addNewResource} 
                                  index={i}
+                                 deleteResource={this.deleteOneResource}
                         />
                     )}
                 )}  

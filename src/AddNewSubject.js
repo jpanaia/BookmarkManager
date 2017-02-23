@@ -21,7 +21,7 @@ export default class AddNewSubject extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.addNew(this.state.subject);
-         this.state = {
+        this.state = {
             subject: ''
         }
     }

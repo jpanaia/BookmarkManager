@@ -23,3 +23,9 @@ label {
 input[type=text], button {
 	padding: 10px;
 }
+
+.red {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
