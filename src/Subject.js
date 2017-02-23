@@ -58,8 +58,6 @@ export default class Subject extends Component {
     }
 
 	render() {
-		//console.log(this.props.items);
-
 		return (
 			<div>
 			<h1>{this.age}</h1>
