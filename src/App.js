@@ -80,9 +80,24 @@ class App extends Component {
     deleteOneResource(title){
         console.log('parent', title);
         const tempState = this.state;
-        console.log(tempState.resources[title]);
-        //this.setState(tempState);
-        //console.log(tempState);
+        console.log(tempState.resources[0]);
+        //console.log(tempState.resources);
+
+        let filteredResources = tempState.resources.filter(
+            (r, i) => r.resources[0]['title'] !== title);
+
+        // let filteredResources = function(){
+        //     tempState.resources.filter(function(r, i) {
+        //       console.log(title.title);
+        //       //console.log(r.resources[0]['title']);
+        //       return r.resources[i]['title'] !=== title.title;
+        //     })
+        // }
+
+        console.log(filteredResources);
+        this.setState({
+            resources: filteredResources
+        });
     }
 
     render() {
