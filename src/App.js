@@ -16,8 +16,9 @@ class App extends Component {
         this.addNewResource = this.addNewResource.bind(this);
         this.addSubject = this.addSubject.bind(this);
         this.deleteOneResource = this.deleteOneResource.bind(this);
+        this.deleteOneSubject = this.deleteOneSubject.bind(this);
 
-        this.state = { 
+        this.state = {
             subject: '',
             resources: [
                 {   subject: "Functional Programming",
@@ -73,30 +74,20 @@ class App extends Component {
             subject: subject,
             resources: []
         }
-
         tempState.resources.push(newSubject);
         this.setState(tempState);
     }
 
-    deleteOneResource(title, subject){
-       // console.log('parent', subject, title);
+    deleteOneResource(subject, resource){
         const tempState = this.state;
-        //console.log(tempState.resources[subject].resources);
+        tempState.resources[subject].resources.splice(resource, 1);
+        this.setState(tempState);
+    }
 
-        let filteredResources = tempState.resources[subject].resources.filter(
-            (r) => r['title'] !== title);
-
-        // let filteredResources = function(){
-        //     tempState.resources[subject].resources.filter(function(r, i) {
-        //      //console.log('hello', r.resources[i]);
-        //       // console.log('title iteration', r['title']);
-        //       // console.log('title to delete', title)
-        //       return r['title'] !== title;
-        //     })
-        // }
-        //filteredResources();
-        console.log(filteredResources);
-        this.setState({resources: filteredResources});
+    deleteOneSubject(subject){
+        const tempState = this.state;
+        tempState.resources.splice(subject, 1);
+        this.setState(tempState);
     }
 
     render() {
@@ -108,14 +99,16 @@ class App extends Component {
 
                 {this.state.resources.map((resource, i) => {
                     return (
-                        <Subject key={i} 
-                                 items={resource} 
-                                 addResource={this.addNewResource} 
-                                 index={i}
-                                 deleteResource={this.deleteOneResource}
-                        />
+                            <Subject key={i}
+                                     items={resource}
+                                     addResource={this.addNewResource}
+                                     index={i}
+                                     deleteResource={this.deleteOneResource}
+                                     deleteSubject={this.deleteOneSubject}
+                            />
                     )}
-                )}  
+                )}
+
             </div>
         );
     }
