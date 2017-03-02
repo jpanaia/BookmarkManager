@@ -62,6 +62,7 @@ class App extends Component {
 
     addNewResource(subject, resource) {
         const tempState = this.state;
+        console.log(tempState.resources[subject]);
         tempState.resources[subject].resources.push(resource);
         this.setState(tempState);
     }
@@ -77,27 +78,25 @@ class App extends Component {
         this.setState(tempState);
     }
 
-    deleteOneResource(title){
-        console.log('parent', title);
+    deleteOneResource(title, subject){
+       // console.log('parent', subject, title);
         const tempState = this.state;
-        console.log(tempState.resources[0]);
-        //console.log(tempState.resources);
+        //console.log(tempState.resources[subject].resources);
 
-        let filteredResources = tempState.resources.filter(
-            (r, i) => r.resources[0]['title'] !== title);
+        let filteredResources = tempState.resources[subject].resources.filter(
+            (r) => r['title'] !== title);
 
         // let filteredResources = function(){
-        //     tempState.resources.filter(function(r, i) {
-        //       console.log(title.title);
-        //       //console.log(r.resources[0]['title']);
-        //       return r.resources[i]['title'] !=== title.title;
+        //     tempState.resources[subject].resources.filter(function(r, i) {
+        //      //console.log('hello', r.resources[i]);
+        //       // console.log('title iteration', r['title']);
+        //       // console.log('title to delete', title)
+        //       return r['title'] !== title;
         //     })
         // }
-
+        //filteredResources();
         console.log(filteredResources);
-        this.setState({
-            resources: filteredResources
-        });
+        this.setState({resources: filteredResources});
     }
 
     render() {

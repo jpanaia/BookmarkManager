@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Delete from './Delete';
+//import Delete from './Delete';
 
 export default class Subject extends Component {
 	constructor(props) {
@@ -59,9 +59,11 @@ export default class Subject extends Component {
         })
     }
 
-    deleteResource(title){
-        console.log('sibling', title);
-        this.props.deleteResource(title);
+    deleteResource(e){
+        const title = e.target.value;
+        const subject = this.props.index;
+        //console.log(subject);
+        this.props.deleteResource(title, subject);
     }
 
 	render() {
@@ -94,7 +96,13 @@ export default class Subject extends Component {
 				<ul id="resource-list" className={this.state.newStyle}>
 					{this.props.items.resources.map((resource, i) => {
 						return (
-							<li key={i}><a onMouseOver={this.swapStyle.bind(this)} href={resource.url}>{resource.title}</a> <Delete delete={this.deleteResource} title={resource.title}/> </li>
+							<li key={i}><a onMouseOver={this.swapStyle.bind(this)} href={resource.url}>{resource.title}</a> 
+								&nbsp; <input className="red" 
+												type="checkbox"
+												name={this.props.items.subject} 
+												value={resource.title}
+												onClick={this.deleteResource}/>
+							</li>
 						)}
 					)}
 				</ul>
